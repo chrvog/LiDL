@@ -545,61 +545,70 @@ lidl:Layout
     </section>
     <section>
       <h2>Composite Layouts</h2>
-
+      Composite Layouts group a list of attributes together. In contrary to Atomic Layouts, they do represent a semantic structure in the binary resource or the lifted RDF and not concrete values.
       <section>
         <h2>lidl:attribute</h2>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+          A Composite Layout MUST define at least one contained attribute.
       </section>
     </section>
     <section>
       <h2>Attributes</h2>
-      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+      An <i>Attributes</i> attaches <i>Layouts</i> to <i>CompositeLayoutes</i>. They describe how structures in the binary resource are arranged and how they will be lifted to RDF.
+      <section>
+        <h2>lidl:elementShape</h2>
+        Attributes provide one or more <i>Layout</i>, linked with <i>lidl:elementShape</i>, that describe the structure of contained elements.
+        All linked <i>Layouts</i> are matched against the given binary data. If a <i>Layout</i> does not match due to constants, it's discarded.
+
       <section>
         <h2>Memory Address Computation</h2>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+          As one of the main purposes of attributes is the description of structures that are lifted from the binary resource to RDF, they have to provide enough information to compute the location the in binary resource.
+
           <section>
             <h2>lidl:order</h2>
-              Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            Attributes of a <i>Composite Layout</i> can provide a unique order. For these attributes, the interpreter assumes that they are sequentially arranged in the memory relative to the <i>Composite Layout</i> and calculates the memory address implicitly starting with a byte offset of 0 for the attribute with the lowest <i>lidl:order</i>.
           </section>
           <section>
             <h2>lidl:memoryAddress</h2>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+              <font color="red">TODO! bit/byteoffset and the reference layout</font>
           </section>
+<br><br>
+
+          If none of these is provided by the <i>Attribute</i>, the <i>Attribute</i> has to represent either a constant <i>Atomic Layout</i> with a defined <i>lidl:value</i>, or the memory address of linked the layout must be uniquely calculable relative to the enclosing layout of the <i>Attribute</i>.
+<br>
+          <font color="red">TBD! a linked layout is maybe used to describe the elements in an array. how do we handle the ambiguity? </font>
+<br>
+          <font color="red">TODO! Diagram</font>
       </section>
       <section>
-        <h2>RDF representation</h2>
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+        <h2>Lifted RDF representation</h2>
+        The second purpose of an <i>Attribute</i> is to describe how <i>Layouts</i> are lifted to RDF.
         <section>
           <h2>lidl:predicate</h2>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-        </section>
-        <section>
-          <h2>lidl:elementShape</h2>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+            Each <i>Attribute</i> CAN provide a RDF property that is used to link the lifted elements to the lifted <i>Layout</i>.
         </section>
         <section>
           <h2>lidl:condition</h2>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+          Each <i>Attribute</i> CAN provide a condition describe by a boolean literal or expression that must be fulfilled to create a lifting of the <i>Attribute</i>.
         </section>
         <section>
           <h2>lidl:resourcifyRawData</h2>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+          A boolean flag that enables the creation of an endpoint the memory slice that represents the attribute.
         </section>
       </section>
       <section>
         <h2>Array</h2>
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+        An <i>Array</i> is an ordered list of elements. Attributes can specify the length of an <i>Array</i> by specifying the number of contained elements or by defining a delimiter that represents the end of the array in the memory.
         <section>
           <h2>lidl:elementCount</h2>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+          The number of elements in the array either described as a RDF literal of type xsd:int or by <i>Expression</i> of this type. The <i>Attribute</i> MUST define either the element count or a delimiter.
         </section>
         <section>
           <h2>lidl:delimiter</h2>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+          A value that is used to represent the end of the <i>Array</i>. The value is define by a RDF literal or by an expression.
         </section>
         <section>
-          <h2>lidl:forceRecursion</h2>
-            Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+          <h2>lidl:forceRecursion</h2>.
+          <font color="red">TBD!</font>
         </section>
       </section>
   </section>
@@ -690,7 +699,7 @@ lidl:Layout
             </tr>
           </table>
           </section>
-        </section>      
+        </section>
       <section>
       <h2>lidl:ArgumentList</h2>
       Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
