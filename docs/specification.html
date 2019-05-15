@@ -616,94 +616,97 @@ lidl:Layout
 
     </section>
     <section>
-      <h2>Expressions</h2>
-      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+    <h2>Expressions</h2>
+    The structure in binary files has often dependendancies between different attributes. LiDL supports mathematical expressions to allow the interpreter to calculate new values based on the values of other attributes.
 
-      <section>
-        <h2>Operators</h2>
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-        <section>
-          <h2>Predefined Operators</h2>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
-
-          <table>
-            <tr>
-              <th>Operator</th>
-              <th>Argument Datatypes</th>
-              <th>Number of Arguments</th>
-              <th>Result Datatype</th>
-              <th>Description</th>
-            </tr>
-            <tr>
-              <td>add</td>
-              <td>IntegerX/FloatX</td>
-              <td>2+</td>
-              <td>Same as Arguments</td>
-              <td>Arg<sub>1</sub> + Arg<sub>2</sub> + ... + Arg<sub>n</sub></td>
-            </tr>
-            <tr>
-              <td>sub</td>
-              <td>IntegerX/FloatX</td>
-              <td>2</td>
-              <td>Same as Arguments</td>
-              <td>Arg<sub>1</sub> - Arg<sub>2</sub></td>
-            </tr>
-            <tr>
-              <td>mul</td>
-              <td>IntegerX/FloatX</td>
-              <td>2+</td>
-              <td>Same as Arguments</td>
-              <td>Arg<sub>1</sub> * Arg<sub>2</sub> * ... * Arg<sub>n</sub></td>
-            </tr>
-            <tr>
-              <td>div</td>
-              <td>IntegerX/FloatX</td>
-              <td>2</td>
-              <td>Same as Arguments</td>
-              <td>Arg<sub>1</sub> / Arg<sub>2</sub></td>
-            </tr>
-            <tr>
-              <td>gr</td>
-              <td>IntegerX/FloatX</td>
-              <td>2</td>
-              <td>Boolean</td>
-              <td>Arg<sub>1</sub> > Arg<sub>2</sub></td>
-            </tr>
-            <tr>
-              <td>gre</td>
-              <td>IntegerX/FloatX</td>
-              <td>2</td>
-              <td>Boolean</td>
-              <td>Arg<sub>1</sub> >= Arg<sub>2</sub></td>
-            </tr>
-            <tr>
-              <td>eq</td>
-              <td>IntegerX/FloatX</td>
-              <td>2</td>
-              <td>Boolean</td>
-              <td>Arg<sub>1</sub> == Arg<sub>2</sub></td>
-            </tr>
-            <tr>
-              <td>sm</td>
-              <td>IntegerX/FloatX</td>
-              <td>2</td>
-              <td>Boolean</td>
-              <td>Arg<sub>1</sub> < Arg<sub>2</sub></td>
-            </tr>
-            <tr>
-              <td>sme</td>
-              <td>IntegerX/FloatX</td>
-              <td>2</td>
-              <td>Boolean</td>
-              <td>Arg<sub>1</sub> <= Arg<sub>2</sub></td>
-            </tr>
-          </table>
-          </section>
+    <section>
+      <h2>Operators</h2>
+      LiDL provides a list of mathematical <i>Operators</i> that MUST be supported by every interpreter. The operators accept RDF literals or uniquely addressable layouts as arguments in form of an <i>ArgumentList</i>
+      <table>
+          <tr>
+            <th>Operator</th>
+            <th>Argument Datatypes</th>
+            <th>Number of Arguments</th>
+            <th>Result Datatype</th>
+            <th>Description</th>
+          </tr>
+          <tr>
+            <td>add</td>
+            <td>IntegerX/FloatX</td>
+            <td>2+</td>
+            <td>Same as Arguments</td>
+            <td>Arg<sub>1</sub> + Arg<sub>2</sub> + ... + Arg<sub>n</sub></td>
+          </tr>
+          <tr>
+            <td>sub</td>
+            <td>IntegerX/FloatX</td>
+            <td>2</td>
+            <td>Same as Arguments</td>
+            <td>Arg<sub>1</sub> - Arg<sub>2</sub></td>
+          </tr>
+          <tr>
+            <td>mul</td>
+            <td>IntegerX/FloatX</td>
+            <td>2+</td>
+            <td>Same as Arguments</td>
+            <td>Arg<sub>1</sub> * Arg<sub>2</sub> * ... * Arg<sub>n</sub></td>
+          </tr>
+          <tr>
+            <td>div</td>
+            <td>IntegerX/FloatX</td>
+            <td>2</td>
+            <td>Same as Arguments</td>
+            <td>Arg<sub>1</sub> / Arg<sub>2</sub></td>
+          </tr>
+          <tr>
+            <td>gr</td>
+            <td>IntegerX/FloatX</td>
+            <td>2</td>
+            <td>Boolean</td>
+            <td>Arg<sub>1</sub> > Arg<sub>2</sub></td>
+          </tr>
+          <tr>
+            <td>gre</td>
+            <td>IntegerX/FloatX</td>
+            <td>2</td>
+            <td>Boolean</td>
+            <td>Arg<sub>1</sub> >= Arg<sub>2</sub></td>
+          </tr>
+          <tr>
+            <td>eq</td>
+            <td>IntegerX/FloatX</td>
+            <td>2</td>
+            <td>Boolean</td>
+            <td>Arg<sub>1</sub> == Arg<sub>2</sub></td>
+          </tr>
+          <tr>
+            <td>sm</td>
+            <td>IntegerX/FloatX</td>
+            <td>2</td>
+            <td>Boolean</td>
+            <td>Arg<sub>1</sub> < Arg<sub>2</sub></td>
+          </tr>
+          <tr>
+            <td>sme</td>
+            <td>IntegerX/FloatX</td>
+            <td>2</td>
+            <td>Boolean</td>
+            <td>Arg<sub>1</sub> <= Arg<sub>2</sub></td>
+          </tr>
+        </table>
         </section>
-      <section>
-      <h2>lidl:ArgumentList</h2>
-      Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
       </section>
+
+      <h2>lidl:ArgumentList</h2>
+      Arguments are passed to operators in form of a RDF list.
+      </section>
+
+      <pre class="example-layout">
+      ex:2DByteArrayAttribute a lidl:Attribute ;
+                          lidl:order 0 ;
+                          lidl:elementShape [ a datatype:Byte ] ;
+                          lidl:elementCount  [ lidl:multiply ( _:arrayWidth _:arrayHeight ) ]</pre>
+
     </section>
 
   </body>
